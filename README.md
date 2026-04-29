@@ -44,3 +44,7 @@ If you want to reproduce the tokenizer comparison locally, make sure the noteboo
 - The notebook contains exploratory code and validation cells rather than a packaged Python module.
 - The GPT-2 tokenizer section is intended to match the behavior of the official GPT-2 encoding for the included examples.
 - The notebook is self-contained and does not require any project-specific configuration beyond the Python dependencies above.
+
+## Learning Log
+
+- 2026-04-29: Learned about attention and thinking models today.
