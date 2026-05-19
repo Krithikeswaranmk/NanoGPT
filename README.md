@@ -1,50 +1,25 @@
-# NanoGPT Tokenizer Notebook
+# NanoGPT Visualizer
 
-This repository contains a single notebook, `nanogpt.ipynb`, that walks through several tokenizer implementations inspired by nanoGPT and GPT-2.
+**See inside a GPT transformer — live, as you chat.**
 
-The notebook includes:
+Split-screen web app: Claude-style chat on the left, live transformer internals on the right.
 
-- A minimal byte-pair encoding (BPE) tokenizer built from scratch
-- A GPT-2-style tokenizer with regex pre-tokenization
-- A GPT-2 tokenizer loader that uses the official `encoder.json` and `vocab.bpe` files
-- Round-trip tests and comparisons against `tiktoken`
+## Quickstart
 
-## What It Demonstrates
+```bash
+cp backend/.env.example backend/.env   # add your GROQ_API_KEY
+./start.sh                              # Mac/Linux  (or start.bat on Windows)
+# open http://localhost:3000
+```
 
-The notebook is structured as a learning and validation workflow:
+Get a free Groq API key: https://console.groq.com
 
-1. Train a simple BPE tokenizer on sample text
-2. Verify `decode(encode(x)) == x` on ASCII and sample strings
-3. Implement GPT-2 style pre-tokenization and BPE merge logic
-4. Download GPT-2 vocabulary files and test a compatible tokenizer implementation
-5. Compare outputs against `tiktoken` for several example strings
+## Features
 
-## Requirements
+- ⚡ Fast mode (Llama 3.1 8B) and 🧠 Thinking mode (Llama 3.3 70B)
+- 🌐 Web search via Tavily or DuckDuckGo
+- 📊 Live visualizer: tokenize → embed → attention → FFN → output
+- 🎛 Interactive temperature slider on output distribution
 
-The notebook is written for Python 3.12 and uses:
-
-- `numpy`
-- `pandas`
-- `regex`
-- `tiktoken`
-
-The notebook also downloads the GPT-2 vocabulary files during execution:
-
-- `encoder.json`
-- `vocab.bpe`
-
-## Running the Notebook
-
-Open `nanogpt.ipynb` in VS Code or Jupyter and run the cells from top to bottom.
-
-If you want to reproduce the tokenizer comparison locally, make sure the notebook environment has `regex`, `pandas`, and `tiktoken` installed.
-
-## Notes
-
-- The notebook contains exploratory code and validation cells rather than a packaged Python module.
-- The GPT-2 tokenizer section is intended to match the behavior of the official GPT-2 encoding for the included examples.
-- The notebook is self-contained and does not require any project-specific configuration beyond the Python dependencies above.
-
-## Learning Log
-
-- 2026-04-29: Learned about attention and thinking models today.
+## Full setup guide: [INSTRUCTIONS.md](INSTRUCTIONS.md)
+## Social media assets: [docs/social_media_assets.md](docs/social_media_assets.md)

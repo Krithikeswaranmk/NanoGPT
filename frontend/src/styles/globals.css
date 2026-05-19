@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  body {
+    @apply bg-surface-950 text-gray-100 font-sans antialiased;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-surface-800 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-surface-200/30; }
+}
+
+@layer components {
+  /* ── Glass card ── */
+  .glass {
+    @apply bg-surface-900/80 border border-white/[0.06] backdrop-blur-sm;
+  }
+
+  /* ── Glow effects ── */
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(108, 99, 246, 0.15), 0 0 60px rgba(108, 99, 246, 0.05);
+  }
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
+  }
+
+  /* ── Gradient text ── */
+  .grad-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #7c6ff7 0%, #2dd4bf 100%);
+  }
+
+  /* ── Token chip ── */
+  .token-chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono
+           border transition-all duration-200 cursor-default;
+  }
+
+  /* ── Step panel ── */
+  .step-panel {
+    @apply rounded-xl border border-white/[0.06] bg-surface-900/60 p-4;
+  }
+
+  /* ── Mode toggle ── */
+  .mode-btn {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+           transition-all duration-200 border;
+  }
+  .mode-btn.active {
+    @apply bg-accent-500/20 border-accent-500/50 text-accent-400;
+    box-shadow: 0 0 12px rgba(108, 99, 246, 0.2);
+  }
+  .mode-btn:not(.active) {
+    @apply bg-surface-800/50 border-white/[0.06] text-gray-400 hover:text-gray-200 hover:border-white/10;
+  }
+
+  /* ── Send button ── */
+  .send-btn {
+    @apply flex items-center justify-center w-9 h-9 rounded-lg
+           bg-accent-500 hover:bg-accent-400 active:scale-95
+           transition-all duration-150 text-white disabled:opacity-40
+           disabled:cursor-not-allowed;
+  }
+
+  /* ── Attention cell ── */
+  .attn-cell {
+    aspect-ratio: 1;
+    transition: opacity 0.15s;
+  }
+
+  /* ── Thinking block ── */
+  .thinking-block {
+    @apply rounded-lg border border-amber-400/20 bg-amber-400/5 p-3 mb-3;
+  }
+
+  /* ── Prose in chat ── */
+  .chat-prose h1,h2,h3 { @apply font-semibold mt-4 mb-2; }
+  .chat-prose p        { @apply mb-3 leading-relaxed; }
+  .chat-prose code     { @apply font-mono text-teal-400 bg-surface-800 px-1.5 py-0.5 rounded text-[0.8em]; }
+  .chat-prose pre      { @apply bg-surface-850 rounded-lg p-4 overflow-x-auto my-3; }
+  .chat-prose pre code { @apply bg-transparent p-0 text-gray-300; }
+  .chat-prose ul       { @apply list-disc pl-5 mb-3 space-y-1; }
+  .chat-prose ol       { @apply list-decimal pl-5 mb-3 space-y-1; }
+  .chat-prose a        { @apply text-accent-400 underline; }
+  .chat-prose strong   { @apply font-semibold text-white; }
+}
+
+/* ── Blinking cursor ── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink::after {
+  content: '▋';
+  @apply text-accent-400;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Shimmer loading ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+/* ── Heatmap gradient ── */
+.heatmap-cell {
+  transition: background-color 0.2s;
+}
+
+/* ── Embedding bar ── */
+.emb-bar {
+  height: 6px;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
